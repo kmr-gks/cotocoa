@@ -1,6 +1,9 @@
 CoToCoA (Code To Code Adapter)
 =====
 
+CoToCoAをcamphor(京大)で動かすために一部パス、コマンドを変更しています。
+公式リポジトリからforkしました。
+
 CoToCoA is a framework to enable coupled computations, such as multi-scale simulations. Instead of using intermediate files, it enables direct communication among multiple programs.
 Compared with similar frameworks, CoToCoA has the following advantages:
 - One-directional flow
