@@ -1,4 +1,4 @@
-PREFIX=/usr/local/cotocoa
+PREFIX=..
 CC=mpicc
 FC=mpifort
 CFLAGS=-I${PREFIX}/include
