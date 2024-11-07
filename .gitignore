@@ -3,6 +3,7 @@ lib/
 *.a
 *.mod
 *.o
+*.out
 test/sample1_coupler
 test/sample1_requester
 test/sample1_worker1
@@ -16,3 +17,7 @@ test/sample2_worker3
 test/sample3_coupler
 test/sample3_requester
 test/sample3_worker
+test/sample4_coupler
+test/sample4_requester
+out*.txt
+__pycache__/
