@@ -21,7 +21,7 @@ program test1_req
 
   allocate(data(m/8))
   allocate(hdl(n))
-  do i = 0, m/8
+  do i = 1, m/8
      call random_number(x)
      data(i) = x - 0.5
   end do
