@@ -1,32 +1,28 @@
+.PHONY: all install clean
+.DEFAULT_GOAL := install
+
 PREFIX=..
-CC=mpicc
-FC=mpifort
+CC=mpiicc
+FC=mpiifort
 CFLAGS=-I.
 LDFLAGS=-L.
 LIBS=-lctca
 F_LIBS=-lctca_f -lctca_mod
 
-TARGETS=libctca.a libctca_f.a libctca_mod.a
+FILES = ctca ctca_f ctca_mod
 
-all: ${TARGETS}
+OBJECTS = $(FILES:=.o)
+TARGETS = $(FILES:%=lib%.a)
 
-libctca.a:	ctca.o
-	ar rc libctca.a ctca.o
+all: ${TARGETS} ${OBJECTS}
 
-libctca_f.a: ctca_f.o
-	ar rc libctca_f.a ctca_f.o
+lib%.a: %.o
+	ar rc $@ $^
 
-libctca_mod.a: ctca_mod.o
-	ar rc libctca_mod.a ctca_mod.o
-
-ctca.o: ctca.c
-	$(CC) $(CFLAGS) -c ctca.c
-
-ctca_f.o: ctca_f.c
-	$(CC) $(CFLAGS) -c ctca_f.c
-
-ctca_mod.o: ctca_mod.f90
-	$(FC) $(CFLAGS) -c ctca_mod.f90
+%.o: %.c
+	$(CC) $(CFLAGS) -c $^
+%.o: %.f90
+	$(FC) $(CFLAGS) -c $^
 
 install: all
 	/usr/bin/mkdir -p ${PREFIX}/lib
